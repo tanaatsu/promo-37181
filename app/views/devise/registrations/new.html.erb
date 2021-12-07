@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>Album example · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    
+
+    <!-- Bootstrap core CSS -->
+   <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+  </head>
+  <body>
+  <header>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <%= link_to "PromoApp", root_path, class:"navbar-brand d-flex align-items-center" %>
+      <div>
+       <%= link_to "ログイン", new_user_session_path, class:"btn btn-secondary my-2" %>
+       <%= link_to "新規登録", new_user_registration_path, class:"btn btn-primary my-2" %>
+      </div>
+    </div>
+  </div>
+</header>
+
+ 
+<div class="main">
+<div class="container-main">
+ <%= form_with model: @user, url: user_registration_path ,method: :POST,  class: 'registration-main', local: true do |f| %>
+
+ <div class='form-wrap'>
+   <div class='form-header'>
+     <h3 class='form-header-text'>
+      会員情報入力
+     </h3>
+   </div>
+
+  <%#= render  'shared/error_messages', model: f.object %>
+  
+   <div class="form-group">
+     <div class='form-text-wrap'>
+       <label class="form-text">ニックネーム</label>
+       <span class="indispensable">(必須)</span>
+     </div>
+     <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) furima太郎", maxlength:"40" %>
+   </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">メールアドレス</label>
+      <span class="indispensable">(必須)</span>
+    </div>
+    <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">パスワード</label>
+      <span class="indispensable">(必須)</span>
+    </div>
+    <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字" %>
+    <p class='info-text'>※英字と数字の両方を含めて設定してください</p>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">パスワード(確認)</label>
+      <span class="indispensable">(必須)</span>
+    </div>
+    <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
+  </div>
+  <div class="form-group">
+    <p class='form-info-header'>
+      本人確認
+    </p>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">お名前(全角)</label>
+      <span class="indispensable">(必須)</span>
+    </div>
+    <div class='input-name-wrap'>
+      <%= f.text_area :last_name, class:"input-name", id:"last-name", placeholder:"例) 山田" %>
+      <%= f.text_area :first_name, class:"input-name", id:"first-name", placeholder:"例) 陸太郎" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">電話番号</label>
+      <span class="indispensable">(必須)</span>
+    </div>
+    <%= f.text_area :telephone, class:"input-default", id:"telephone", placeholder:"12345678910" %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">生年月日</label>
+      <span class="indispensable">(必須)</span>
+    </div>
+    <div class='input-birth-wrap'>
+      <%= raw sprintf(
+                  f.date_select(
+                    :birthday,
+                    class:'select-birth',
+                    id:"birth-date",
+                    use_month_numbers: true,
+                    prompt:'--',
+                    start_year: 1930,
+                    end_year: (Time.now.year - 5),
+                    date_separator: '%s'),
+                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+    </div>
+   <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">職種</label>
+        <span class="indispensable">(必須)</span>
+      </div>
+      <%= f.text_area :occupation_id, class:"input-default", id:"occupation_id", placeholder:"---" %>
+   </div>
+   <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">業種</label>
+        <span class="indispensable">(必須)</span>
+      </div>
+      <%= f.text_area :industry_id, class:"input-default", id:"industry_id", placeholder:"---" %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">このアプリを知った理由</label>
+        <span class="indispensable">(必須)</span>
+      </div>
+      <%= f.text_area :reason_id, class:"input-default", id:"reason_id", placeholder:"---" %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">パーソン</label>
+        <span class="indispensable">(必須)</span>
+      </div>
+      <%= f.text_area :person_id, class:"input-default", id:"person_id", placeholder:"---" %>
+    </div>
+    <div class="form-group">
+      <p class='form-info-header'>
+      店舗情報（店舗経営の方は入力）
+      </p>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">店舗名</label>
+      </div>
+      <%= f.text_area :store_name, class:"input-default", id:"store_name", placeholder:"---" %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+         <label class="form-text">エリア</label>
+      </div>
+      <%= f.text_area :area, class:"input-default", id:"area", placeholder:"---" %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">営業時間</label>
+      </div>
+      <%= f.text_area :opening_hours, class:"input-default", id:"opening_hours", placeholder:"---" %>
+    </div>
+    
+   <div class='d-grid gap-2'>
+     <%= f.submit "会員登録" ,class:"btn btn-primary" %>
+   </div>
+ </div>
+ <% end %>
+</div>
+</div>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="footer-sign-in">
+</div>
+      
+  </body>
+</html>

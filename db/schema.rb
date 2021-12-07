@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_12_07_052218) do
     t.integer "person_id", null: false
     t.string "store_name"
     t.string "area"
-    t.string "opnening_hours"
+    t.string "opening_hours"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

@@ -15,7 +15,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.integer :person_id,            null: false
       t.string :store_name           
       t.string :area                 
-      t.string :opnening_hours        
+      t.string :opening_hours        
       t.string :email,              null: false,unique: true, default: "" 
       t.string :encrypted_password, null: false, default: ""
 
