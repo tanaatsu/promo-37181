@@ -4,6 +4,9 @@ class User < ApplicationRecord
   belongs_to :reason
   belongs_to :person
   belongs_to :prefecture
+
+  has_many :posts
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
