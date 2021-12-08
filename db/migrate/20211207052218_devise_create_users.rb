@@ -9,10 +9,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string  :first_name,           null: false
       t.string  :telephone,            null: false
       t.date    :birthday,             null: false
-      t.integer :occupation_id,        null: false
       t.integer :industry_id,          null: false
       t.integer :reason_id,            null: false
       t.integer :person_id,            null: false
+      t.integer :prefecture_id
       t.string :store_name           
       t.string :area                 
       t.string :opening_hours        

@@ -65,7 +65,7 @@
        <label class="form-text">ニックネーム</label>
        <span class="indispensable">(必須)</span>
      </div>
-     <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) furima太郎", maxlength:"40" %>
+     <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) tanaka123", maxlength:"40" %>
    </div>
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -87,7 +87,7 @@
       <label class="form-text">パスワード(確認)</label>
       <span class="indispensable">(必須)</span>
     </div>
-    <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
+    <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力" %>
   </div>
   <div class="form-group">
     <p class='form-info-header'>
@@ -100,8 +100,8 @@
       <span class="indispensable">(必須)</span>
     </div>
     <div class='input-name-wrap'>
-      <%= f.text_area :last_name, class:"input-name", id:"last-name", placeholder:"例) 山田" %>
-      <%= f.text_area :first_name, class:"input-name", id:"first-name", placeholder:"例) 陸太郎" %>
+      <%= f.text_area :last_name, class:"input-name", id:"last-name", placeholder:"例) 田中" %>
+      <%= f.text_area :first_name, class:"input-name", id:"first-name", placeholder:"例) 太郎" %>
     </div>
   </div>
   <div class="form-group">
@@ -131,31 +131,24 @@
     </div>
    <div class="form-group">
       <div class='form-text-wrap'>
-        <label class="form-text">職種</label>
-        <span class="indispensable">(必須)</span>
-      </div>
-      <%= f.text_area :occupation_id, class:"input-default", id:"occupation_id", placeholder:"---" %>
-   </div>
-   <div class="form-group">
-      <div class='form-text-wrap'>
         <label class="form-text">業種</label>
         <span class="indispensable">(必須)</span>
       </div>
-      <%= f.text_area :industry_id, class:"input-default", id:"industry_id", placeholder:"---" %>
+      <%= f.collection_select(:industry_id, Industry.all, :id, :name, {},{class:"input-default", id:"industry_id"}) %>
     </div>
     <div class="form-group">
       <div class='form-text-wrap'>
-        <label class="form-text">このアプリを知った理由</label>
+        <label class="form-text">このアプリを知ったきっかけ</label>
         <span class="indispensable">(必須)</span>
       </div>
-      <%= f.text_area :reason_id, class:"input-default", id:"reason_id", placeholder:"---" %>
+      <%= f.collection_select(:reason_id, Reason.all, :id, :name, {}, {class:"input-default", id:"reason_id"}) %>
     </div>
     <div class="form-group">
       <div class='form-text-wrap'>
         <label class="form-text">パーソン</label>
         <span class="indispensable">(必須)</span>
       </div>
-      <%= f.text_area :person_id, class:"input-default", id:"person_id", placeholder:"---" %>
+      <%= f.collection_select(:person_id, Person.all, :id, :name, {}, {class:"input-default", id:"person_id"}) %>
     </div>
     <div class="form-group">
       <p class='form-info-header'>
@@ -166,19 +159,25 @@
       <div class='form-text-wrap'>
         <label class="form-text">店舗名</label>
       </div>
-      <%= f.text_area :store_name, class:"input-default", id:"store_name", placeholder:"---" %>
+      <%= f.text_area :store_name, class:"input-default", id:"store_name", placeholder:"例）店名  〇〇店" %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">都道府県</label>
+      </div>
+      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"input-default", id:"prefecture_id"}) %>
     </div>
     <div class="form-group">
       <div class='form-text-wrap'>
          <label class="form-text">エリア</label>
       </div>
-      <%= f.text_area :area, class:"input-default", id:"area", placeholder:"---" %>
+      <%= f.text_area :area, class:"input-default", id:"area", placeholder:"例）港区赤坂2-11-7" %>
     </div>
     <div class="form-group">
       <div class='form-text-wrap'>
         <label class="form-text">営業時間</label>
       </div>
-      <%= f.text_area :opening_hours, class:"input-default", id:"opening_hours", placeholder:"---" %>
+      <%= f.text_area :opening_hours, class:"input-default", id:"opening_hours", placeholder:"例）9:00~20:00" %>
     </div>
     
    <div class='d-grid gap-2'>
