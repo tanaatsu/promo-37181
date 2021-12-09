@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_12_08_063314) do
     t.string "title", null: false
     t.text "text", null: false
     t.integer "genre_id", null: false
-    t.integer "price", null: false
+    t.integer "price"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

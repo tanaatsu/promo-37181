@@ -23,6 +23,7 @@ class User < ApplicationRecord
          validates :industry_id,   numericality: { other_than: 1 ,message: "can't be blank"}
          validates :reason_id,     numericality: { other_than: 1 ,message: "can't be blank"}
          validates :person_id,     numericality: { other_than: 1 ,message: "can't be blank"}
+
 end
 
 
