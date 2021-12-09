@@ -1,3 +1,11 @@
 .top-image{
   background-image: url(top-image.png);
 }
+
+.nickname{
+  color: aliceblue;
+}
+
+.post-btn{
+  padding-top: 50px;
+}

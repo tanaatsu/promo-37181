@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>Album example · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    
+
+    <!-- Bootstrap core CSS -->
+   <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    
+<%= render "header" %>
+
+ 
+<div class="main">
+<div class="container-main">
+ <%= form_with model: @post, url: posts_path ,method: :POST,  class: 'registration-main', local: true do |f| %>
+
+ <div class='form-wrap'>
+   <div class='form-header'>
+     <h3 class='form-header-text'>
+      投稿フォーム
+     </h3>
+   </div>
+
+   <%#= render  'shared/error_messages', model: f.object %>
+  
+   <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">タイトル</label>
+        <span class="indispensable">(必須)</span>
+      </div>
+      <%= f.text_area :title, class:"input-default", id:"title", placeholder:"例) 電動ドライバー", maxlength:"40" %>
+   </div>
+   <div class="form-group">
+       <div class='form-text-wrap'>
+          <label class="form-text">説明</label>
+          <span class="indispensable">(必須)</span>
+        </div>
+        <%= f.text_area :text, class:"input-default", id:"text", placeholder:"例) 投稿の説明文", maxlength:"40" %>
+    </div>
+
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">商品画像</label>
+        <span class="indispensable">クリックしてアップロード（必須）</span>
+      </div>
+      <%= f.file_field :image, id:"item-image" %>
+   </div>
+
+   <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">カテゴリー</label>
+        <span class="indispensable">(必須)</span>
+      </div>
+      <%= f.collection_select(:genre_id, Genre.all, :id, :name, {},{class:"input-default", id:"genre_id"}) %>
+   </div>
+   <div class="form-group">
+     <div class='form-text-wrap'>
+       <label class="form-text">価格</label>
+       <span class="indispensable">(必須)</span>
+     </div>
+     <%= f.text_area :price, class:"input-default", id:"price", placeholder:"例) 1000", maxlength:"40" %>
+   </div>
+
+  
+    <div class='d-grid gap-2'>
+      <%= f.submit "投稿" ,class:"btn btn-primary" %>
+    </div>
+ </div>
+ <% end %>
+</div>
+</div>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="footer-sign-in">
+</div>
+      
+  </body>
+</html>

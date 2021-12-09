@@ -35,31 +35,28 @@
   </head>
   <body>
     
-<header>
-  <div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <a href="#" class="navbar-brand d-flex align-items-center">
-        <strong class="logo">PromoApp</strong>
-      </a>
-      <div>
-       <a href="#" class="btn btn-secondary my-2">ログイン</a>
-       <a href="#" class="btn btn-primary my-2">新規登録</a>
-      </div>
-    </div>
-  </div>
-</header>
+ <%= render "header" %>
 
 <main>
   <div class="top-image">
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
+       <% if user_signed_in? %>
+         <h1 class="text-white">PromoAppへようこそ</h1>
+        <a class="lead text-white">知ってもらいたいお店と、知りたいお客様を繋ぎ合わせるアプリです</a>
+        <a class="lead text-white">さあ、投稿しましょう</a>
+         <p class="post-btn">
+          <%= link_to "投稿する", new_post_path, class:"btn btn-success" %>
+        </p>
+       <% else %>
         <h1 class="text-white">PromoAppへようこそ</h1>
         <a class="lead text-white">知ってもらいたいお店と、知りたいお客様を繋ぎ合わせるアプリです</a>
         <a class="lead text-white">さあ、はじめましょう</a>
-        <p>
-          <a href="#" class="btn btn-primary my-2">新規登録</a>
+        <p class="post-btn">
+          <%= link_to "新規登録", new_user_registration_path, class:"btn btn-primary my-2" %>
         </p>
+       <% end %>
       </div>
     </div>
   </section>
@@ -242,10 +239,7 @@
   </div>
 </div>
 
-
-
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-      
   </body>
 </html>
