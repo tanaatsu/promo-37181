@@ -54,9 +54,11 @@ ActiveRecord::Schema.define(version: 2021_12_08_063314) do
     t.integer "reason_id", null: false
     t.integer "person_id", null: false
     t.integer "prefecture_id"
+    t.integer "business_id"
     t.string "store_name"
     t.string "area"
     t.string "opening_hours"
+    t.string "store_appeal"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

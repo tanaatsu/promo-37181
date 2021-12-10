@@ -157,10 +157,23 @@
     </div>
     <div class="form-group">
       <div class='form-text-wrap'>
+        <label class="form-text">業態</label>
+      </div>
+      <%= f.collection_select(:business_id, Business.all, :id, :name, {}, {class:"input-default", id:"business_id"}) %>
+    </div>
+    <div class="form-group">
+      <div class='form-text-wrap'>
         <label class="form-text">店舗名</label>
       </div>
       <%= f.text_area :store_name, class:"input-default", id:"store_name", placeholder:"例）店名  〇〇店" %>
     </div>
+     <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">店舗画像</label>
+        <span class="indispensable">クリックしてアップロード（必須）</span>
+      </div>
+      <%= f.file_field :image, id:"store-image" %>
+   </div>
     <div class="form-group">
       <div class='form-text-wrap'>
         <label class="form-text">都道府県</label>
@@ -171,7 +184,7 @@
       <div class='form-text-wrap'>
          <label class="form-text">エリア</label>
       </div>
-      <%= f.text_area :area, class:"input-default", id:"area", placeholder:"例）港区赤坂2-11-7" %>
+      <%= f.text_area :area, class:"input-area", id:"area", placeholder:"例）港区赤坂2-11-7" %>
     </div>
     <div class="form-group">
       <div class='form-text-wrap'>
@@ -179,9 +192,17 @@
       </div>
       <%= f.text_area :opening_hours, class:"input-default", id:"opening_hours", placeholder:"例）9:00~20:00" %>
     </div>
-    
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">アピールポイント</label>
+      </div>
+      <%= f.text_area :store_appeal, class:"input-appeal", id:"store_appeal", placeholder:"例）店のアピールポイントなど" %>
+    </div>
+   
+   <div class="submit">
    <div class='d-grid gap-2'>
      <%= f.submit "会員登録" ,class:"btn btn-primary" %>
+   </div>
    </div>
  </div>
  <% end %>

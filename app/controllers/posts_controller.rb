@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order("created_at DESC").includes(:user)
+    @users = User.all
   end
 
   def new
@@ -15,6 +16,10 @@ class PostsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
   
   private

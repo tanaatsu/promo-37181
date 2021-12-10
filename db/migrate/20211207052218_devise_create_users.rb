@@ -13,9 +13,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.integer :reason_id,            null: false
       t.integer :person_id,            null: false
       t.integer :prefecture_id
+      t.integer :business_id
       t.string :store_name           
       t.string :area                 
       t.string :opening_hours        
+      t.string :store_appeal
       t.string :email,              null: false,unique: true, default: "" 
       t.string :encrypted_password, null: false, default: ""
 
