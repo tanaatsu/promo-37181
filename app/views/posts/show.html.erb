@@ -43,7 +43,7 @@
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
        
-         <h1 class="text-white">商品詳細ページ</h1>
+         <h1 class="text-white">商品詳細</h1>
         <div class="text-space">
         <a class="lead text-white">気になることがあればコメントをしましょう</a>
         </div>
@@ -51,44 +51,76 @@
     </div>
   </section>
   </div>
-  <div class="post-content">
-  <div class="album py-5 bg-light">
-    <h3 class="post-list">商品詳細</h3>
-    <div class="container">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        
-        <div class="col">
-          <div class="card shadow-sm">
-            <div>
-            <%= image_tag @post.image, class: "item-img" %>
-            </div>
-            <div class="card-body">
-              <p class="card-text"><%= @post.text %></p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-     </div>
+
+
+ <div class="post-box">
+    <table class="detail-table">
+      <tbody class="detail-balance">
+        <tr>
+          <th class="detail-item1">タイトル</th>
+          <td class="detail-value1"><%= @post.title %></td>
+        </tr>
+        <tr>
+          <th class="detail-item2">投稿画像</th>
+          <td class="detail-value2"><%= image_tag @post.image.variant(resize:'500x500')  %></td>
+        </tr>
+      </tbody>
+      <tbody class="detail-balance">
+        <tr>
+          <th class="detail-item3">カテゴリー</th>
+          <td class="detail-value3"><%= @post.genre.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item4">投稿文</th>
+          <td class="detail-value4"><%= @post.text %></td>
+        </tr>
+        <tr>
+          <th class="detail-item5">店舗名</th>
+          <td class="detail-value5"><%= @post.user.store_name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item6">投稿者名</th>
+          <td class="detail-value6"><%= @post.user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="detail-item7">価格</th>
+          <td class="detail-value7"><%= @post.price %>円</td>
+        </tr>
+      </tbody>
+    </table>
+ </div>
+
+ <div class="post-btn">
+   <% if user_signed_in? && current_user.id == @post.user_id %>
+   <div class="edit-btn">
+     <button type="button" class="btn btn-success btn-lg">編集する</button>
    </div>
-  </div>
+   <div class="destroy-btn">
+    <button type="button" class="btn btn-secondary btn-lg">削除する</button>
+   </div>
+   <% end %>
+   <% if @post.price.present?%>
+    <% unless user_signed_in? && current_user.id == @post.user_id %>
+    <div class="sell-btn">
+      <button type="button" class="btn btn-danger btn-lg">購入する</button>
+    </div>
+    <% end %>
+   <% end %>
+   <%= link_to "戻る", root_path, class:"btn btn-secondary btn-lg" %>
+ </div>
+
 
 </main>
 
 <div class="navbar navbar-dark bg-dark shadow-sm">
   <div class="container">
-    <div class="footer-bar">
-      <p class="navbar-brand d-flex align-items-center">
+     <div class="footer-bar">
+       <p class="navbar-brand d-flex align-items-center">
         <strong>About</strong>
-      </p>
-      <a href="#" class="navbar-brand d-flex align-items-center">
-        <a class="text-muted">PromoAppとは、お買い得情報満載のプロショップと職人様を繋ぎ合わせるアプリです。</a>
-      </a>
+       </p>
+       <a href="#" class="navbar-brand d-flex align-items-center">
+         <a class="text-muted">PromoAppとは、お買い得情報満載のプロショップと職人様を繋ぎ合わせるアプリです。</a>
+       </a>
      </div>
      <ul class="list-unstyled">
       <h5 class="text-white">Contact</h5>
