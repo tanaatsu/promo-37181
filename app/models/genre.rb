@@ -9,7 +9,7 @@ class Genre < ActiveHash::Base
     { id: 7 , name:  '電設資材    （例=> 配線コード、投光器、延長コード、スイッチプレートetc）' },
     { id: 8 , name:  '住宅設備機器 （例=> 洗面化粧台、キッチン台、給湯器、換気扇etc）' },
     { id: 9 , name:  '木材        （例=> 合板、角材、SPF材、DIY用品etc）' },
-    { id: 10 , name: '建築資材    （例=> ブロック、セメント、台車、工事用品etc）' },
+    { id: 10 , name: '建築資材    （例=> ブロック、セメント、台車、工事用品etc）' }
   ]
 
   include ActiveHash::Associations

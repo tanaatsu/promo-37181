@@ -25,7 +25,7 @@ class Industry < ActiveHash::Base
    { id: 23, name: '農業' },
    { id: 24, name: '製造業' },
    { id: 25, name: '店舗運営' },
-   { id: 26, name: 'その他業種' },
+   { id: 26, name: 'その他業種' }
  ]
 
  include ActiveHash::Associations

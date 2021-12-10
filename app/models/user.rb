@@ -4,8 +4,10 @@ class User < ApplicationRecord
   belongs_to :reason
   belongs_to :person
   belongs_to :prefecture
+  belongs_to :business
 
   has_many :posts
+  has_one_attached :image
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -23,6 +25,7 @@ class User < ApplicationRecord
          validates :industry_id,   numericality: { other_than: 1 ,message: "can't be blank"}
          validates :reason_id,     numericality: { other_than: 1 ,message: "can't be blank"}
          validates :person_id,     numericality: { other_than: 1 ,message: "can't be blank"}
+
 end
 
 

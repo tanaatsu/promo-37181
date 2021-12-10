@@ -15,6 +15,7 @@
 
 .form-header-text{
   text-align: center;
+  padding-bottom: 20px;
 }
 
 .form-header{
@@ -22,7 +23,7 @@
 }
 
 .form-info-header{
-  padding-top: 20px;
+  padding-top: 40px;
 }
 
 .indispensable{
@@ -51,4 +52,17 @@
 
 .select-birth{
   height: 30px;
+}
+
+.input-appeal{
+  height: 120px;
+  width: 400px;
+}
+.input-area{
+  height: 90px;
+  width: 400px;
+}
+
+.submit{
+  padding-top: 40px;
 }
