@@ -93,10 +93,10 @@
  <div class="post-btn">
    <% if user_signed_in? && current_user.id == @post.user_id %>
    <div class="edit-btn">
-     <button type="button" class="btn btn-success btn-lg">編集する</button>
+     <%= link_to "編集する" , edit_post_path(@post.id), class:"btn btn-success btn-lg" %>
    </div>
    <div class="destroy-btn">
-    <button type="button" class="btn btn-secondary btn-lg">削除する</button>
+    　<%= link_to "削除する" , post_path(@post.id), method: :DELETE, class:"btn btn-secondary btn-lg" %>
    </div>
    <% end %>
    <% if @post.price.present?%>
