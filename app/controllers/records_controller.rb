@@ -16,6 +16,12 @@ class RecordsController < ApplicationController
     @post = Post.find(params[:post_id])
     @record_address = RecordAddress.new(record_params)
     if @record_address.valid?
+      Payjp.api_key = "sk_test_9063b554dfa5438e538eada0"
+      Payjp::Charge.create(
+        amount: @post.price,
+        card: record_params[:token],
+        currency: 'jpy'
+      )
       @record_address.save
       redirect_to root_path
     else
@@ -26,7 +32,7 @@ class RecordsController < ApplicationController
   private
   
   def record_params
-    params.require(:record_address).permit(:postal_code,:prefecture_id,:municipality,:address,:building_name).merge(user_id: current_user.id, post_id: @post.id)
+    params.require(:record_address).permit(:postal_code,:prefecture_id,:municipality,:address,:building_name).merge(user_id: current_user.id, post_id: @post.id,token: params[:token])
   end
 
 end

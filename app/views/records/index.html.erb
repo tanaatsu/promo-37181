@@ -81,7 +81,7 @@
  </div>
 
 <div class="container-main">
- <%= form_with model: @record_address, url: post_records_path ,method: :POST,  class: 'registration-main', local: true do |f| %>
+ <%= form_with model: @record_address, url: post_records_path ,method: :POST,  class: 'registration-main', id:"charge-form", local: true do |f| %>
 
  <div class='form-wrap'>
    <div class='form-header'>
@@ -167,7 +167,7 @@
 
     <div class="new-submit">
       <div class='d-grid gap-2'>
-        <%= f.submit "購入する" ,class:"btn btn-danger" %>
+        <%= f.submit "購入する" ,class:"btn btn-danger",id: 'submit-btn' %>
       </div>
     </div>
     <div class="new-submit">
