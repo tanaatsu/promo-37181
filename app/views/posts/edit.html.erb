@@ -38,12 +38,12 @@
  
 <div class="main">
 <div class="container-main">
- <%= form_with model: @post, url: posts_path ,method: :POST,  class: 'registration-main', local: true do |f| %>
+ <%= form_with model: @post, url: post_path ,method: :PATCH,  class: 'registration-main', local: true do |f| %>
 
  <div class='form-wrap'>
    <div class='form-header'>
      <h3 class='form-header-text'>
-      投稿フォーム
+      編集ページ
      </h3>
    </div>
 
@@ -87,12 +87,11 @@
      <%= f.text_area :price, class:"input-default", id:"price", placeholder:"例) 1000", maxlength:"40" %>
    </div>
 
-    <div class="new-submit">
+    <div class="edit-submit">
       <div class='d-grid gap-2'>
-        <%= f.submit "投稿" ,class:"btn btn-primary" %>
+         <%= f.submit "変更する" ,class:"btn btn-primary" %>
       </div>
-    </div>
-    <div class="new-submit">
+    <div class="edit-submit">
       <div class='d-grid gap-2'>
          <%= link_to "戻る", root_path, class:"btn btn-secondary" %>
       </div>
