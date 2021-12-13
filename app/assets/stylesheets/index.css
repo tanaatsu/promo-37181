@@ -1,5 +1,6 @@
 .top-image{
   background-image: url(top-image.png);
+  height: 400px;
 }
 
 .nickname{
@@ -23,7 +24,7 @@
 }
 
 .post-list{
-  padding: 0 0 30px 180px;
+  padding: 0 0 30px 193px;
   
 }
 .store-lists{

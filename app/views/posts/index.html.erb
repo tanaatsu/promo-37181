@@ -79,8 +79,10 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                    <%= link_to "View" , post_path(post.id), class:"btn btn-sm btn-outline-secondary" %>
-                  <% if user_signed_in? %>
+                  <% if user_signed_in? && current_user.id == post.user_id %>
                    <%= link_to "Edit" , edit_post_path(post.id), class:"btn btn-sm btn-outline-secondary" %>
+                  <% elsif  post.record.present? %>
+                   <%= link_to "SOLD OUT" , root_path, class:"btn btn-sm btn-outline-secondary" %>
                   <% end %>
                 </div>
                 <small class="text-muted">9 mins</small>

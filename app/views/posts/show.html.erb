@@ -83,8 +83,10 @@
           <td class="detail-value6"><%= @post.user.nickname %></td>
         </tr>
         <tr>
+          <% if @post.price.present? %>
           <th class="detail-item7">価格</th>
           <td class="detail-value7"><%= @post.price %>円</td>
+          <% end %>
         </tr>
       </tbody>
     </table>
@@ -101,11 +103,15 @@
    <% end %>
    <% if @post.price.present?%>
     <% unless user_signed_in? && current_user.id == @post.user_id %>
-     <% unless @post.record.present?%>
-    <div class="sell-btn">
-      <%= link_to "購入する" , post_records_path(@post.id), class:"btn btn-danger btn-lg" %>
-    </div>
-    <% end %>
+      <% unless @post.record.present?%>
+       <div class="sell-btn">
+         <%= link_to "購入する" , post_records_path(@post.id), class:"btn btn-danger btn-lg" %>
+       </div>
+      <% else %>
+       <div class="sell-btn">
+       <button type="button" class="btn btn-light btn-lg">SOLD OUT</button>
+       </div>
+      <% end %>
     <% end %>
    <% end %>
    <%= link_to "戻る", root_path, class:"btn btn-secondary btn-lg" %>
