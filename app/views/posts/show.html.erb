@@ -96,14 +96,16 @@
      <%= link_to "編集する" , edit_post_path(@post.id), class:"btn btn-success btn-lg" %>
    </div>
    <div class="destroy-btn">
-    　<%= link_to "削除する" , post_path(@post.id), method: :DELETE, class:"btn btn-secondary btn-lg" %>
+     <%= link_to "削除する" , post_path(@post.id), method: :DELETE, class:"btn btn-secondary btn-lg" %>
    </div>
    <% end %>
    <% if @post.price.present?%>
     <% unless user_signed_in? && current_user.id == @post.user_id %>
+     <% unless @post.record.present?%>
     <div class="sell-btn">
-      <button type="button" class="btn btn-danger btn-lg">購入する</button>
+      <%= link_to "購入する" , post_records_path(@post.id), class:"btn btn-danger btn-lg" %>
     </div>
+    <% end %>
     <% end %>
    <% end %>
    <%= link_to "戻る", root_path, class:"btn btn-secondary btn-lg" %>

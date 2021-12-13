@@ -32,3 +32,17 @@
 .store-list{
   width: 100%;
 }
+
+
+.card-logo{
+  width: 50px;
+}
+
+.input-expiration-date-wrap{
+  display: flex;
+}
+
+.address-title{
+  text-align: center;
+  padding:50px 0 30px 0;
+}
