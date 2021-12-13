@@ -9,7 +9,8 @@ class Genre < ActiveHash::Base
     { id: 7 , name:  '電設資材' },
     { id: 8 , name:  '住宅設備機器' },
     { id: 9 , name:  '木材' },
-    { id: 10 , name: '建築資材' }
+    { id: 10 , name: '建築資材' },
+    { id: 11 , name: 'その他' }
   ]
 
   include ActiveHash::Associations
