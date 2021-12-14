@@ -1,0 +1,25 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        last_name: 苗字
+        first_name: 名前
+        telephone: 電話番号
+        birthday: 誕生日
+        industry_id: 業種
+        reason_id: アプリを知った理由
+        person_id: パーソン
+      post:
+        text: 説明文
+        image: 画像
+        title: タイトル
+        genre_id: カテゴリー
+  activemodel:
+    attributes:
+      record_address:
+        postal_code: 郵便番号
+        municipality: 市町村
+        address:  番地
+        token: カード情報
+        prefecture_id: 都道府県

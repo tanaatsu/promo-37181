@@ -18,37 +18,27 @@ RSpec.describe Post, type: :model do
     it 'titleが空では登録できない' do
       @post.title = ''
       @post.valid?
-      expect(@post.errors.full_messages).to include("Title can't be blank")
-    end
-    it 'titleが全角ひらがな、カタカナ、漢字でないと登録できない' do
-      @post.title = 'aaaaa'
-      @post.valid?
-      expect(@post.errors.full_messages).to include("Title is valid. Input full-width charaters.")
+      expect(@post.errors.full_messages).to include("タイトルを入力してください")
     end
     it 'textが空では登録できない' do
       @post.text = ''
       @post.valid?
-      expect(@post.errors.full_messages).to include("Text can't be blank")
-    end
-    it 'textが全角ひらがな、カタカナ、漢字でないと登録できない' do
-      @post.text = 'aaaaaaaaa'
-      @post.valid?
-      expect(@post.errors.full_messages).to include("Text is valid. Input full-width charaters.")
+      expect(@post.errors.full_messages).to include("説明文を入力してください")
     end
     it 'imageが空では登録できない' do
       @post.image = nil
       @post.valid?
-      expect(@post.errors.full_messages).to include("Image can't be blank")
+      expect(@post.errors.full_messages).to include("画像を入力してください")
     end
     it 'genre_idが--では登録できない' do
       @post.genre_id = 1
       @post.valid?
-      expect(@post.errors.full_messages).to include("Genre can't be blank ")
+      expect(@post.errors.full_messages).to include("カテゴリーを選択してください")
     end
     it 'userが紐づいていないと登録できない' do
       @post.user = nil
       @post.valid?
-      expect(@post.errors.full_messages).to include("User must exist")
+      expect(@post.errors.full_messages).to include("Userを入力してください")
     end
   end
 end
