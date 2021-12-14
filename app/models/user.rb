@@ -17,14 +17,14 @@ class User < ApplicationRecord
    with_options presence: true  do
          validates :nickname      
          validates :password      
-         validates :last_name,     format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
-         validates :first_name,    format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
-         validates :telephone,     format: {with: /\A\d{10,11}\z/ }
+         validates :last_name,     format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ ,message:"を正しく入力してください"}
+         validates :first_name,    format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ ,message:"を正しく入力してください"}
+         validates :telephone,     format: {with: /\A\d{10,11}\z/ ,message:"を正しく入力してください"}
          validates :birthday     
    end
-         validates :industry_id,   numericality: { other_than: 1 ,message: "can't be blank"}
-         validates :reason_id,     numericality: { other_than: 1 ,message: "can't be blank"}
-         validates :person_id,     numericality: { other_than: 1 ,message: "can't be blank"}
+         validates :industry_id,   numericality: { other_than: 1 ,message: "を選んでください"}
+         validates :reason_id,     numericality: { other_than: 1 ,message: "を選んでください"}
+         validates :person_id,     numericality: { other_than: 1 ,message: "を選んでください"}
 
 end
 

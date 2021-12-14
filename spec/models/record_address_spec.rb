@@ -23,37 +23,42 @@ RSpec.describe RecordAddress, type: :model do
     it 'postal_codeが空では登録できない' do
       @record_address.postal_code = ''
       @record_address.valid?
-      expect(@record_address.errors.full_messages).to include("Postal code can't be blank")
+      expect(@record_address.errors.full_messages).to include("郵便番号を入力してください")
     end
     it 'postal_codeがハイフンありの7桁でなければ登録できない' do
       @record_address.postal_code = '1234567'
       @record_address.valid?
-      expect(@record_address.errors.full_messages).to include("Postal code is invalid")
+      expect(@record_address.errors.full_messages).to include("郵便番号を正しく入力してください")
+    end
+    it 'municipalityが空では登録できない' do
+      @record_address.municipality = ''
+      @record_address.valid?
+      expect(@record_address.errors.full_messages).to include("市町村を入力してください")
     end
     it 'addressが空では登録できない' do
       @record_address.address = ''
       @record_address.valid?
-      expect(@record_address.errors.full_messages).to include("Address can't be blank")
+      expect(@record_address.errors.full_messages).to include("番地を入力してください")
     end
     it 'prefecture_idが--では登録できない' do
       @record_address.prefecture_id = 1
       @record_address.valid?
-      expect(@record_address.errors.full_messages).to include("Prefecture can't be blank")
+      expect(@record_address.errors.full_messages).to include("都道府県を選択してください")
     end
     it 'tokenが空では登録できない' do
       @record_address.token = ''
       @record_address.valid?
-      expect(@record_address.errors.full_messages).to include("Token can't be blank")
+      expect(@record_address.errors.full_messages).to include("カード情報を入力してください")
     end
     it 'user_idが紐づいていないと登録できない' do
       @record_address.user_id = nil
       @record_address.valid?
-      expect(@record_address.errors.full_messages).to include("User can't be blank")
+      expect(@record_address.errors.full_messages).to include("Userを入力してください")
     end
     it 'post_idが紐づいていないと登録できない' do
       @record_address.post_id = nil
       @record_address.valid?
-      expect(@record_address.errors.full_messages).to include("Post can't be blank")
+      expect(@record_address.errors.full_messages).to include("Postを入力してください")
     end
    end
 end
