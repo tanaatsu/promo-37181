@@ -3,7 +3,7 @@ class RecordAddress
   attr_accessor :postal_code, :prefecture_id, :municipality, :address, :building_name, :record_id, :user_id, :post_id,:token
 
   with_options presence: true do
-    validates :postal_code
+    validates :postal_code   ,format:{ with: /\A\d{3}[-]\d{4}\z/}
     validates :municipality
     validates :address
     validates :user_id

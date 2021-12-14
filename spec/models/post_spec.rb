@@ -30,11 +30,6 @@ RSpec.describe Post, type: :model do
       @post.valid?
       expect(@post.errors.full_messages).to include("Text can't be blank")
     end
-    it 'textが全角ひらがな、カタカナ、漢字でないと登録できない' do
-      @post.text = 'aaaaaaaaa'
-      @post.valid?
-      expect(@post.errors.full_messages).to include("Text is valid. Input full-width charaters.")
-    end
     it 'imageが空では登録できない' do
       @post.image = nil
       @post.valid?
@@ -43,7 +38,7 @@ RSpec.describe Post, type: :model do
     it 'genre_idが--では登録できない' do
       @post.genre_id = 1
       @post.valid?
-      expect(@post.errors.full_messages).to include("Genre can't be blank ")
+      expect(@post.errors.full_messages).to include("Genre can't be blank")
     end
     it 'userが紐づいていないと登録できない' do
       @post.user = nil
