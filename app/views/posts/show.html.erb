@@ -129,7 +129,7 @@
    <div class="comment-content">
      <div class="comment-text">
        <%= form_with model: [@post, @comment], class:"comment-form",id:"comment-form", local: true do |f|%>
-       <%= f.text_area :text, class:"input-default-comment", id:"comment",placeholder: "コメントを入力ください" %>
+       <%= f.text_area :text, class:"input-default-comment", id:"comment",placeholder: "コメントがある方は入力してください" %>
      </div>
      <div class="comment-submit">
        <button type="submit" class="btn btn-primary btn-lg">コメントする</button>
