@@ -117,6 +117,26 @@
    <%= link_to "戻る", root_path, class:"btn btn-secondary btn-lg" %>
  </div>
 
+ <div class="comment">
+   <div class="comment-view">
+     <p>＜コメント一覧＞</p>
+      <% @post.comments.each do |comment|%>
+       <div class="comment-list">
+         <p><b><%= @post.user.nickname %></b> : <%= comment.text %></p>
+       </div>
+      <% end %>
+   </div>
+   <div class="comment-content">
+     <div class="comment-text">
+       <%= form_with model: [@post, @comment], class:"comment-form", local: true do |f|%>
+       <%= f.text_area :text, class:"input-default-comment", id:"comment",placeholder: "コメントを入力ください" %>
+     </div>
+     <div class="comment-submit">
+       <button type="submit" class="btn btn-primary btn-lg">コメントする</button>
+     </div>
+     <% end %>
+    </div>
+  </div>
 
 </main>
 

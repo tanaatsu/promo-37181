@@ -118,3 +118,30 @@
 .sell-btn{
   padding-right: 30px;
 }
+
+.comment{
+  margin: 0 auto;
+  background-color: whitesmoke;
+  width: 1300px;
+  margin-bottom: 60px;
+}
+
+.comment-view{
+  width: 1300px;
+  height: 100%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+.comment-text{
+  text-align: center;
+}
+
+.comment-submit{
+  text-align: center;
+  padding: 30px 0;
+}
+
+.input-default-comment{
+  height: 120px;
+  width: 1000px;
+}
