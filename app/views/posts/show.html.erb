@@ -118,7 +118,7 @@
  </div>
 
  <div class="comment">
-   <div class="comment-view">
+   <div class="comment-view" id= "comments">
      <p>＜コメント一覧＞</p>
       <% @post.comments.each do |comment|%>
        <div class="comment-list">
@@ -128,7 +128,7 @@
    </div>
    <div class="comment-content">
      <div class="comment-text">
-       <%= form_with model: [@post, @comment], class:"comment-form", local: true do |f|%>
+       <%= form_with model: [@post, @comment], class:"comment-form",id:"comment-form", local: true do |f|%>
        <%= f.text_area :text, class:"input-default-comment", id:"comment",placeholder: "コメントを入力ください" %>
      </div>
      <div class="comment-submit">
