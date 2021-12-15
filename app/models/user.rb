@@ -7,6 +7,7 @@ class User < ApplicationRecord
   belongs_to :business
 
   has_many :posts
+  has_many :comments
   has_one_attached :image
   
   # Include default devise modules. Others available are:
