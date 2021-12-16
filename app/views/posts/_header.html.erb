@@ -4,7 +4,7 @@
       <%= link_to "PromoApp", root_path, class:"navbar-brand d-flex align-items-center" %>
       <% if user_signed_in? %>
        <div class="nickname">
-         <%= current_user.nickname %>
+         <%= link_to current_user.nickname , user_path(current_user.id), class:"mypage-btn" %>
          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-secondary my-2" %>
        </div>
       <% else %>

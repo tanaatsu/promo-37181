@@ -104,7 +104,8 @@
              <div class="mb-1 text-muted"><%= user.prefecture.name %></div>
              <p><%= user.area %></p>
              <p><%= user.store_appeal %></p>
-             <a href="#" class="stretched-link">Continue reading</a>
+             <%= link_to "more", user_path(user.id)%>
+             
             </div>
             <div class="col-auto d-none d-lg-block">
             <div>

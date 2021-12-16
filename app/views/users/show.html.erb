@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title>Album example · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    
+
+    <!-- Bootstrap core CSS -->
+   <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+  </head>
+  <body>
+    
+ <%= render "posts/header" %>
+
+<main>
+  <div class="top-image">
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+       
+         <h1 class="text-white">詳細ページ</h1>
+        <div class="text-space">
+        <a class="lead text-white"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+ 
+  <div class="album py-5 bg-light">
+  <% if @user.person_id == 3 %>
+   <h3 class="store-box"><%= @user.store_name %>の店舗詳細</h3>
+   <div class="post-box">
+    <table class="store-table">
+      <tbody class="store-balance">
+        <tr>
+          <th class="store-item">店舗名</th>
+          <td class="store-value"><%= @user.store_name %></td>
+        </tr>
+        <tr>
+          <th class="store-item">業態</th>
+          <td class="store-value"><%= @user.business.name %></td>
+        </tr>
+        <tr>
+          <th class="store-item">都道府県</th>
+          <td class="store-value"><%= @user.prefecture.name %></td>
+        </tr>
+        <tr>
+          <th class="store-item">所在地</th>
+          <td class="store-value"><%= @user.area %></td>
+        <tr>
+          <th class="store-item">営業時間</th>
+          <td class="store-value"><%= @user.opening_hours %></td>
+        </tr>
+        <tr>
+          <th class="store-item">店舗紹介文</th>
+          <td class="store-value"><%= @user.store_appeal %></td>
+        </tr>
+      </tbody>
+      <tbody class="store-balance">
+        <tr>
+          <th class="store-item1">店舗画像</th>
+          <td class="store-value1"><%= image_tag @user.image.variant(resize:'500x500')  %></td>
+        </tr>
+      </tbody>
+    </table>
+   </div>
+   <% if user_signed_in? && current_user.id == @user.id%>
+   <div class="edit-btn">
+     <%= link_to "編集する" , '#', class:"btn btn-success btn-lg" %>
+   </div>
+   <% end %>
+
+    <h3 class="post-list1"><%= @user.store_name %>の投稿一覧</h3>
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% @posts.each do |post| %>
+        <div class="col">
+          <div class="card shadow-sm">
+            <%= link_to post_path(post.id) do %>
+            <div>
+            <%= image_tag post.image, class: "item-img" %>
+            </div>
+            <% end %>
+            <div class="card-body">
+              <p class="card-title"><%= post.title %></p>
+              <p class="card-text"><%= truncate(post.text,length:39) %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                   <%= link_to "View" , post_path(post.id), class:"btn btn-sm btn-outline-secondary" %>
+                  <% if user_signed_in? && current_user.id == post.user_id %>
+                   <%= link_to "Edit" , edit_post_path(post.id), class:"btn btn-sm btn-outline-secondary" %>
+                  <% elsif  post.record.present? %>
+                   <%= link_to "SOLD OUT" , root_path, class:"btn btn-sm btn-outline-secondary" %>
+                  <% end %>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+     </div>
+    <% else %>
+     <h3 class="store-box"><%= @user.nickname %>さんの詳細ページ</h3>
+   <div class="post-box">
+    <table class="store-table">
+      <tbody class="store-balance">
+        <tr>
+          <th class="store-item">ニックネーム</th>
+          <td class="store-value"><%= @user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="store-item">Eメールアドレス</th>
+          <td class="store-value"><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th class="store-item">苗字</th>
+          <td class="store-value"><%= @user.last_name %></td>
+        </tr>
+        <tr>
+          <th class="store-item">名前</th>
+          <td class="store-value"><%= @user.first_name %></td>
+        <tr>
+          <th class="store-item">電話番号</th>
+          <td class="store-value"><%= @user.telephone %></td>
+        </tr>
+        <tr>
+          <th class="store-item">誕生日</th>
+          <td class="store-value"><%= @user.birthday %></td>
+        </tr>
+        <tr>
+          <th class="store-item">職種</th>
+          <td class="store-value"><%= @user.industry.name %></td>
+        </tr>
+        <tr>
+          <th class="store-item">このアプリを知ったきっかけ</th>
+          <td class="store-value"><%= @user.reason.name %></td>
+        </tr>
+        <tr>
+          <th class="store-item">パーソン</th>
+          <td class="store-value"><%= @user.person.name %></td>
+        </tr>
+      </tbody>
+    </table>
+   </div>
+   <% if user_signed_in? && current_user.id == @user.id%>
+   <div class="edit-btn">
+     <%= link_to "編集する","#" , class:"btn btn-success btn-lg" %>
+   </div>
+   <% end %>
+    
+    <% if @user.posts.present? %>
+    <h3 class="post-list1"><%= @user.nickname %>さんの投稿一覧</h3>
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% @posts.each do |post| %>
+        <div class="col">
+          <div class="card shadow-sm">
+            <%= link_to post_path(post.id) do %>
+            <div>
+            <%= image_tag post.image, class: "item-img" %>
+            </div>
+            <% end %>
+            <div class="card-body">
+              <p class="card-title"><%= post.title %></p>
+              <p class="card-text"><%= truncate(post.text,length:39) %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                   <%= link_to "View" , post_path(post.id), class:"btn btn-sm btn-outline-secondary" %>
+                  <% if user_signed_in? && current_user.id == post.user_id %>
+                   <%= link_to "Edit" , edit_post_path(post.id), class:"btn btn-sm btn-outline-secondary" %>
+                  <% elsif  post.record.present? %>
+                   <%= link_to "SOLD OUT" , root_path, class:"btn btn-sm btn-outline-secondary" %>
+                  <% end %>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+     </div>
+     <% end %>
+    <% end %>
+   </div>
+ 
+
+
+ 
+
+ 
+
+</main>
+
+
+
+<div class="navbar navbar-dark bg-dark shadow-sm">
+  <div class="container">
+     <div class="footer-bar">
+       <p class="navbar-brand d-flex align-items-center">
+        <strong>About</strong>
+       </p>
+       <a href="#" class="navbar-brand d-flex align-items-center">
+         <a class="text-muted">PromoAppとは、お買い得情報満載のプロショップと職人様を繋ぎ合わせるアプリです。</a>
+       </a>
+     </div>
+     <ul class="list-unstyled">
+      <h5 class="text-white">Contact</h5>
+      <li><a class="text-secondary">田中 敦嗣</a></li>
+      <li><a class="text-secondary">Email:atsushi19890825@gmail.com</a></li>
+      <li><a class="text-secondary">TEL:0123-45-6789</a></li>
+      <li><a class="text-secondary">FAX:0123-45-6789</a></li>
+    </ul>
+
+  </div>
+</div>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+</html>

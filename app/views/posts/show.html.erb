@@ -119,21 +119,25 @@
 
  <div class="comment">
    <div class="comment-view" id= "comments">
+     <% if @post.comments.present?%>
      <p>＜コメント一覧＞</p>
       <% @post.comments.each do |comment|%>
        <div class="comment-list">
          <p><b><%= @post.user.nickname %></b> : <%= comment.text %></p>
        </div>
       <% end %>
+     <% end %>
    </div>
    <div class="comment-content">
      <div class="comment-text">
+       <% if user_signed_in?%>
        <%= form_with model: [@post, @comment], class:"comment-form",id:"comment-form", local: true do |f|%>
        <%= f.text_area :text, class:"input-default-comment", id:"comment",placeholder: "コメントがある方は入力してください" %>
      </div>
      <div class="comment-submit">
        <button type="submit" class="btn btn-primary btn-lg">コメントする</button>
      </div>
+     <% end %>
      <% end %>
     </div>
   </div>
