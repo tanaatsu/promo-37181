@@ -13,7 +13,7 @@
 
 .post-list1{
   text-align: center;
-  padding-bottom: 60px;
+  padding: 120px 0 60px 0;
 }
 
 .detail-table{
@@ -77,6 +77,11 @@
   background-color:whitesmoke;
   text-align: center;
 }
+.detail-item8{
+  border: 1px solid gray;
+  background-color:whitesmoke;
+  text-align: center;
+}
 
 .detail-value1{
   border: 1px solid gray;
@@ -109,6 +114,10 @@
 .detail-value7{
   border: 1px solid gray;
   padding: 10px;
+}
+.detail-value8{
+  border: 1px solid gray;
+  padding: 10px;  
 }
 
 .post-btn{
@@ -190,5 +199,4 @@
 
 .edit-btn{
   text-align: center;
-  padding-bottom: 120px;
 }
