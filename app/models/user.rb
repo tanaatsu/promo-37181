@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+  attr_accessor :current_password
   belongs_to :industry
   belongs_to :reason
   belongs_to :person
