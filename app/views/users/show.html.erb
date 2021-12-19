@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  
+ <%= render "posts/header" %>
+
+ <main>
+  <div class="top-image">
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+         <h1 class="text-white">詳細ページ</h1>
+        <div class="text-space">
+        <a class="lead text-white"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <div class="album py-5 bg-light">
+  <% if @user.person_id == 3 %>
+   <h3 class="store-box"><%= @user.store_name %>の店舗詳細</h3>
+   <div class="post-box">
+    <table class="store-table">
+      <tbody class="store-balance">
+        <tr>
+          <th class="store-item">店舗名</th>
+          <td class="store-value"><%= @user.store_name %></td>
+        </tr>
+        <tr>
+          <th class="store-item">業態</th>
+          <td class="store-value"><%= @user.business.name %></td>
+        </tr>
+        <tr>
+          <th class="store-item">都道府県</th>
+          <td class="store-value"><%= @user.prefecture.name %></td>
+        </tr>
+        <tr>
+          <th class="store-item">所在地</th>
+          <td class="store-value"><%= @user.area %></td>
+        <tr>
+          <th class="store-item">営業時間</th>
+          <td class="store-value"><%= @user.opening_hours %></td>
+        </tr>
+        <tr>
+          <th class="store-item">店舗紹介文</th>
+          <td class="store-value"><%= @user.store_appeal %></td>
+        </tr>
+      </tbody>
+      <tbody class="store-balance">
+        <tr>
+          <th class="store-item1">店舗画像</th>
+          <td class="store-value1"><%= image_tag @user.image.variant(resize:'500x500')  %></td>
+        </tr>
+      </tbody>
+    </table>
+   </div>
+   <% if user_signed_in? && current_user.id == @user.id%>
+    <div class="edit-reverse-btn">
+      <div class="edit-btn">
+       <%= link_to "編集する" , edit_user_registration_path(@user.id), class:"btn btn-success btn-lg" %>
+      </div>
+      <div class="reverse-btn">
+         <%= link_to "戻る", root_path, class:"btn btn-secondary btn-lg" %>
+      </div>
+    </div>
+   <% end %>
+    <h3 class="post-list1"><%= @user.store_name %>の投稿一覧</h3>
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% @posts.each do |post| %>
+        <div class="col">
+          <div class="card shadow-sm">
+            <%= link_to post_path(post.id) do %>
+            <div>
+            <%= image_tag post.image, class: "item-img" %>
+            </div>
+            <% end %>
+            <div class="card-body">
+              <p class="card-title"><%= post.title %></p>
+              <p class="card-text"><%= truncate(post.text,length:39) %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                   <%= link_to "View" , post_path(post.id), class:"btn btn-sm btn-outline-secondary" %>
+                  <% if user_signed_in? && current_user.id == post.user_id %>
+                   <%= link_to "Edit" , edit_post_path(post.id), class:"btn btn-sm btn-outline-secondary" %>
+                  <% elsif  post.record.present? %>
+                   <%= link_to "SOLD OUT" , root_path, class:"btn btn-sm btn-outline-secondary" %>
+                  <% end %>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+     </div>
+    <% else %>
+
+   <h3 class="store-box"><%= @user.nickname %>さんの詳細ページ</h3>
+   <div class="post-box">
+    <table class="store-table">
+      <tbody class="store-balance">
+        <tr>
+          <th class="store-item">ニックネーム</th>
+          <td class="store-value"><%= @user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="store-item">Eメールアドレス</th>
+          <td class="store-value"><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th class="store-item">苗字</th>
+          <td class="store-value"><%= @user.last_name %></td>
+        </tr>
+        <tr>
+          <th class="store-item">名前</th>
+          <td class="store-value"><%= @user.first_name %></td>
+        <tr>
+          <th class="store-item">電話番号</th>
+          <td class="store-value"><%= @user.telephone %></td>
+        </tr>
+        <tr>
+          <th class="store-item">誕生日</th>
+          <td class="store-value"><%= @user.birthday %></td>
+        </tr>
+        <tr>
+          <th class="store-item">職種</th>
+          <td class="store-value"><%= @user.industry.name %></td>
+        </tr>
+        <tr>
+          <th class="store-item">このアプリを知ったきっかけ</th>
+          <td class="store-value"><%= @user.reason.name %></td>
+        </tr>
+        <tr>
+          <th class="store-item">パーソン</th>
+          <td class="store-value"><%= @user.person.name %></td>
+        </tr>
+      </tbody>
+    </table>
+   </div>
+   <% if user_signed_in? && current_user.id == @user.id%>
+     <div class="edit-reverse-btn">
+       <div class="edit-btn">
+          <%= link_to "編集する" , edit_user_registration_path(@user.id), class:"btn btn-success btn-lg" %>
+       </div>
+       <div class="reverse-btn">
+          <%= link_to "戻る", root_path, class:"btn btn-secondary btn-lg" %>
+       </div>
+     </div>
+   <% end %>
+    
+    <% if @user.posts.present? %>
+    <h3 class="post-list1"><%= @user.nickname %>さんの投稿一覧</h3>
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% @posts.each do |post| %>
+        <div class="col">
+          <div class="card shadow-sm">
+            <%= link_to post_path(post.id) do %>
+            <div>
+            <%= image_tag post.image, class: "item-img" %>
+            </div>
+            <% end %>
+            <div class="card-body">
+              <p class="card-title"><%= post.title %></p>
+              <p class="card-text"><%= truncate(post.text,length:39) %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                   <%= link_to "View" , post_path(post.id), class:"btn btn-sm btn-outline-secondary" %>
+                  <% if user_signed_in? && current_user.id == post.user_id %>
+                   <%= link_to "Edit" , edit_post_path(post.id), class:"btn btn-sm btn-outline-secondary" %>
+                  <% elsif  post.record.present? %>
+                   <%= link_to "SOLD OUT" , root_path, class:"btn btn-sm btn-outline-secondary" %>
+                  <% end %>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+     </div>
+     <% end %>
+    <% end %>
+   </div>
+ </main>
+
+ <%= render 'posts/footer' %>
+  
+</html>

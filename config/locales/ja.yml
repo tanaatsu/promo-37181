@@ -23,3 +23,6 @@ ja:
         address:  番地
         token: カード情報
         prefecture_id: 都道府県
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"

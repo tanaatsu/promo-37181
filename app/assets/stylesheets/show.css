@@ -4,11 +4,16 @@
 
 .post-box{
   padding-left: 180px;
-  padding: 50px 0 100px 180px;
+  padding: 50px 0 60px 180px;
 }
 
 .post-title{
   display: flex;
+}
+
+.post-list1{
+  text-align: center;
+  padding: 120px 0 60px 0;
 }
 
 .detail-table{
@@ -72,6 +77,11 @@
   background-color:whitesmoke;
   text-align: center;
 }
+.detail-item8{
+  border: 1px solid gray;
+  background-color:whitesmoke;
+  text-align: center;
+}
 
 .detail-value1{
   border: 1px solid gray;
@@ -88,7 +98,7 @@
 }
 .detail-value4{
   border: 1px solid gray;
-  padding-bottom: 208px;
+  padding-bottom: 170px;
   padding-left: 10px;
   padding-top: 10px;     
 }
@@ -104,6 +114,10 @@
 .detail-value7{
   border: 1px solid gray;
   padding: 10px;
+}
+.detail-value8{
+  border: 1px solid gray;
+  padding: 10px;  
 }
 
 .post-btn{
@@ -121,7 +135,6 @@
 
 .comment{
   margin: 0 auto;
-  background-color: whitesmoke;
   width: 1300px;
   margin-bottom: 60px;
 }
@@ -144,4 +157,53 @@
 .input-default-comment{
   height: 120px;
   width: 1000px;
+}
+
+
+.store-box{
+  text-align: center;
+}
+
+
+.store-balance{
+  width: 100%;
+  
+}
+.store-item{
+  border: 1px solid gray;
+  width: 300px;
+  height: 8vh;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+.store-value{
+  border: 1px solid gray;
+  width: 1000px;
+  padding-left: 40px;
+}
+
+.store-item1{
+  border: 1px solid gray;
+  width: 150px;
+  height: 8vh;
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+.store-value1{
+  border: 1px solid gray;
+  width: 600px;
+  text-align: center;
+}
+
+.edit-reverse-btn{
+  display: flex;
+  justify-content: center;
+}
+.edit-btn{
+  padding-right: 20px;
+}
+.reverse-btn{
+  padding-left: 20px;
 }
