@@ -197,6 +197,13 @@
   text-align: center;
 }
 
+.edit-reverse-btn{
+  display: flex;
+  justify-content: center;
+}
 .edit-btn{
-  text-align: center;
+  padding-right: 20px;
+}
+.reverse-btn{
+  padding-left: 20px;
 }

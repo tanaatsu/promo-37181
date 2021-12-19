@@ -71,9 +71,11 @@
    <% if @post.price.present?%>
      <% unless user_signed_in? && current_user.id == @post.user_id %>
        <% unless @post.record.present?%>
+        <% if user_signed_in? %>
         <div class="sell-btn">
            <%= link_to "購入する" , post_records_path(@post.id), class:"btn btn-danger btn-lg" %>
         </div>
+        <% end %>
        <% else %>
         <div class="sell-btn">
          <button type="button" class="btn btn-light btn-lg">SOLD OUT</button>
