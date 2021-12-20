@@ -5,7 +5,7 @@
 
  <div class="main">
   <div class="container-main">
-   <%= form_with model: @post, url: posts_path ,method: :POST,  class: 'registration-main', local: true do |f| %>
+   <%= form_with model: @post, url: posts_path ,method: :POST, id:'new_post', class: 'registration-main', local: true do |f| %>
    <div class='form-wrap'>
     <div class='form-header'>
       <h3 class='form-header-text'>
@@ -34,6 +34,7 @@
       <div class='form-text-wrap'>
         <label class="form-text">商品画像</label>
         <span class="indispensable">クリックしてアップロード（必須）</span>
+        <div id="previews"></div>
       </div>
       <%= f.file_field :image, id:"item-image" %>
    </div>
