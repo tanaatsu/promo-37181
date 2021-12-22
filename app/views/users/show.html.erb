@@ -52,6 +52,45 @@
           <td class="store-value1"><%= image_tag @user.image.variant(resize:'500x500')  %></td>
         </tr>
       </tbody>
+      <% if user_signed_in? && current_user.id == @user.id %>
+      <tbody class="store-balance">
+         <tr>
+          <th class="store-item">ニックネーム</th>
+          <td class="store-value"><%= @user.nickname %></td>
+        </tr>
+        <tr>
+          <th class="store-item">Eメールアドレス</th>
+          <td class="store-value"><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th class="store-item">苗字</th>
+          <td class="store-value"><%= @user.last_name %></td>
+        </tr>
+        <tr>
+          <th class="store-item">名前</th>
+          <td class="store-value"><%= @user.first_name %></td>
+        <tr>
+          <th class="store-item">電話番号</th>
+          <td class="store-value"><%= @user.telephone %></td>
+        </tr>
+        <tr>
+          <th class="store-item">誕生日</th>
+          <td class="store-value"><%= @user.birthday %></td>
+        </tr>
+        <tr>
+          <th class="store-item">職種</th>
+          <td class="store-value"><%= @user.industry.name %></td>
+        </tr>
+        <tr>
+          <th class="store-item">このアプリを知ったきっかけ</th>
+          <td class="store-value"><%= @user.reason.name %></td>
+        </tr>
+        <tr>
+          <th class="store-item">パーソン</th>
+          <td class="store-value"><%= @user.person.name %></td>
+        </tr>
+      </tbody>
+      <% end %>
     </table>
    </div>
    <% if user_signed_in? && current_user.id == @user.id%>
@@ -87,7 +126,7 @@
                    <%= link_to "SOLD OUT" , root_path, class:"btn btn-sm btn-outline-secondary" %>
                   <% end %>
                 </div>
-                <small class="text-muted">9 mins</small>
+                <small class="text-muted"><%= time_ago_in_words( l post.created_at) %>前</small>
               </div>
             </div>
           </div>
