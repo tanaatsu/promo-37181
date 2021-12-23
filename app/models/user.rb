@@ -7,8 +7,8 @@ class User < ApplicationRecord
   belongs_to :prefecture
   belongs_to :business
 
-  has_many :posts
-  has_many :comments
+  has_many :posts ,dependent: :destroy
+  has_many :comments,dependent: :destroy
   has_one_attached :image
   has_many :sns_credentials
 

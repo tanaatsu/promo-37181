@@ -98,6 +98,9 @@
       <div class="edit-btn">
        <%= link_to "編集する" , edit_user_registration_path(@user.id), class:"btn btn-success btn-lg" %>
       </div>
+      <div class="destroy-btn">
+        <%= link_to "退会する" , user_path(@user.id), method: :DELETE, class:"btn btn-secondary btn-lg" %>
+      </div>
       <div class="reverse-btn">
          <%= link_to "戻る", root_path, class:"btn btn-secondary btn-lg" %>
       </div>
@@ -181,6 +184,9 @@
      <div class="edit-reverse-btn">
        <div class="edit-btn">
           <%= link_to "編集する" , edit_user_registration_path(@user.id), class:"btn btn-success btn-lg" %>
+       </div>
+       <div class="destroy-btn">
+         <%= link_to "退会する" , user_path(@user.id), method: :DELETE, class:"btn btn-secondary btn-lg" %>
        </div>
        <div class="reverse-btn">
           <%= link_to "戻る", root_path, class:"btn btn-secondary btn-lg" %>
