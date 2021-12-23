@@ -1,19 +1,17 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!, only:[:index]
+  before_action :post_set, only:[:index,:new,:create]
   
   def index
-    @post = Post.find(params[:post_id])
     @posts = Post.includes(:user)
     @record_address= RecordAddress.new
   end
 
   def new
-    @post = Post.find(params[:post_id])
     @record_address = RecordAddress.new
   end
 
   def create
-    @post = Post.find(params[:post_id])
     @record_address = RecordAddress.new(record_params)
     if @record_address.valid?
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
@@ -35,4 +33,7 @@ class RecordsController < ApplicationController
     params.require(:record_address).permit(:postal_code,:prefecture_id,:municipality,:address,:building_name).merge(user_id: current_user.id, post_id: @post.id,token: params[:token])
   end
 
+  def post_set
+    @post = Post.find(params[:post_id])
+  end
 end
