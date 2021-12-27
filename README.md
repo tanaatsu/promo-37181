@@ -1,70 +1,13 @@
-# README
-
-## users テーブル
-|Column---------------|Type----------|Options------------------------|
-|nickname-------------|string--------|null :false--------------------|
-|email----------------|string--------|null :false, unique: true------|
-|encrypted_password---|string--------|null :false--------------------|
-|last_name------------|string--------|null :false--------------------|
-|first_name-----------|string--------|null :false--------------------|
-|telephone------------|string--------|null :false--------------------|
-|birthday-------------|date----------|null :false--------------------|
-|industry_id----------|integer-------|null :false--------------------|
-|reason_id------------|integer-------|null :false--------------------|
-|person_id------------|integer-------|null :false--------------------|
-|business_id----------|string--------|-------------------------------|
-|store_appeal---------|string--------|-------------------------------|
-|store_name-----------|string--------|-------------------------------|
-|prefecture_id--------|integer-------|-------------------------------|
-|area-----------------|string--------|-------------------------------|
-|opening_hours--------|string--------|-------------------------------|
-
-## Association
-has_many :posts 
-has_many :records 
-has_many :comments
-
-## posts テーブル
-|Column---------------|Type----------|Options------------------------|
-|title----------------|string--------|null :false--------------------|
-|text-----------------|text----------|null :false--------------------|
-|genre_id-------------|integer-------|null :false--------------------|
-|price----------------|integer-------|-------------------------------|
-|user-----------------|references----|null :false, foreign_key: true-|
-
-## Association
-has_many :comments 
-belongs_to :user 
-has_one :record
-
-## comments テーブル
-|Column---------------|Type----------|Options------------------------|
-|text-----------------|text----------|null :false--------------------|
-|user-----------------|references----|null :false,foreign_key: true--|
-|post-----------------|references----|null :false,foreign_key: true--|
-
-## Association
-belongs_to :user 
-belongs_to :post
-
-## records テーブル
-|Column---------------|Type-----------|Options------------------------|
-|user-----------------|references-----|null :false,foreign_key: true--|
-|post-----------------|references-----|null :false,foreign_key: true--|
-
-## Association
-belongs_to :post 
-belongs_to :user 
-has_one :address
-
-## addresses テーブル
-|Column---------------|Type-----------|Options------------------------|
-|postal_code----------|string---------|null :false--------------------|
-|prefecture_id--------|integer--------|null :false--------------------|
-|municipality---------|string---------|null :false--------------------|
-|address--------------|string---------|null :false--------------------|
-|building_name--------|string---------|-------------------------------|
-|record---------------|references-----|null :false, foreign_key: true-|
-
-## Association
-belongs_to :record
+| 記述すること                   | 備考                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | 
+| アプリケーション名             | PromoTOOL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 
+| アプリケーション概要           | 店舗とお客様を繋ぎ合わせるアプリ（販促ツールアプリ）                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 
+| ＵＲＬ                         | https://promo-37181.herokuapp.com                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 
+| テスト用アカウント             | メールアドレス:test2<br>パスワード:testtest2222                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | 
+| 利用方法                       | 1.トップページの一覧ページのヘッダーからユーザー新規登録を行う<br>2.消費者サイドは必須項目を入力し、店舗サイドは必須項目に追加して店舗情報を入力し登録<br>3.店舗サイドは投稿ボタンから投稿内容（タイトル、説明文、商品画像、カテゴリーは必須、価格は任意）を入力し投稿<br>4.消費者サイドは、投稿詳細ページから投稿内容を見ることができ価格情報があるものは販売商品として購入ができる<br>5.購入ページではクレジットカード情報と配送先を入力すると購入ができる<br>6.投稿内容に関しては投稿詳細ページより質問としてコメントができる | 
+| アプリケーションを作成した背景 | 私は前職にて小売業の経験で売上を上げるためにはまずお客様にお店のことを知ってもらいご来店頂くことが前提でした。その手段として店舗側とお客様を繋ぎ合わせるアプリを開発しました。店舗側がアピールとしてお客様に知ってもらいたい情報を投稿し、お客様は店舗の情報を見ることができ興味を持ってもらいご来店して頂く、ということをアプリケーションを通じて売上向上、集客に繋げればと考え作成しました。                                                                                                                                   | 
+| 洗い出した要件                 | https://docs.google.com/spreadsheets/d/1ULrL_9SAB3_DIlozUyCwf1TKk5awRuarE7ZULiSD3yw/edit?usp=sharing                                                                                                                                                                                                                                                                                                                                                                                                                             | 
+| 実装予定の機能                 | GoogleMapを導入し、店舗住所を地図上でマークされるように表示する                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | 
+| データベース設計               | [![Image from Gyazo](https://i.gyazo.com/ce2171055b8e22479c0c810aa770f851.png)](https://gyazo.com/ce2171055b8e22479c0c810aa770f851)                                                                                                                                                                                                                                                                                                                                                                                              | 
+| 画面遷移図                     | [![Image from Gyazo](https://i.gyazo.com/b6b851532e30a43c2ee48cc209c7ee1c.png)](https://gyazo.com/b6b851532e30a43c2ee48cc209c7ee1c)                                                                                                                                                                                                                                                                                                                                                                                              | 
+| 開発環境                       | ・フロントエンド: HTML,CSS/JavaScript<br>・バックエンド:Ruby(ver 2.6.5),Ruby on Rails(ver 6.0.0)<br>・インフラ:heroku, AWS(S3),MySQL<br>・テスト:RSpec<br>・テキストエディタ:Visual Studio Code<br>・タスク管理:GitHubプロジェクトボード                                                                                                                                                                                                                                                                                         | 
