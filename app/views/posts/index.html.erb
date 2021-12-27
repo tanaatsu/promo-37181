@@ -86,7 +86,7 @@
                      <% if user_signed_in? && current_user.id == post.user_id %>
                       <%= link_to "Edit" , edit_post_path(post.id), class:"btn btn-sm btn-outline-secondary" %>
                      <% elsif  post.record.present? %>
-                      <%= link_to "SOLD OUT" , root_path, class:"btn btn-sm btn-outline-secondary" %>
+                      <%= link_to "SOLD OUT" , root_path, class:"btn btn-sm btn-outline-danger" %>
                      <% end %>
                    </div>
                    <small class="text-muted"><%= time_ago_in_words( l post.created_at) %>前</small>
